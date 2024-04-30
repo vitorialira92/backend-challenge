@@ -1,10 +1,15 @@
 package mercadoeletronico.BackendChallenge.dtos.order;
 
-import mercadoeletronico.BackendChallenge.domain.OrderItem;
+
+import io.swagger.v3.oas.annotations.media.Schema;
 
 import java.util.List;
 
-public class OrderRequestDTO {
+@Schema(description = "Order details for order creation")
+public class OrderCreationDTO {
+    @Schema(description = "Order identifier")
     public Long pedido;
-    public List<OrderItem> itens;
+    @Schema(description = "Order items")
+
+    public List<OrderItemDTO> itens;
 }
