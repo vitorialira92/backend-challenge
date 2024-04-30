@@ -8,7 +8,7 @@ public class OrderItem {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     @ManyToOne
-    @JoinColumn(name = "order_id", nullable = false)
+    @JoinColumn(name = "item_id", nullable = false)
     private Item item;
     private double unityPrice;
     private int quantity;

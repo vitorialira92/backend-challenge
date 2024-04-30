@@ -5,10 +5,10 @@ import jakarta.persistence.*;
 import java.util.List;
 
 @Entity
+@Table(name = "orders")
 public class Order {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     @OneToMany(cascade = CascadeType.ALL)
     @JoinColumn(name = "order_id")
@@ -28,5 +28,21 @@ public class Order {
 
     public void setItems(List<OrderItem> items) {
         this.items = items;
+    }
+
+    public double getTotalPrice(){
+        double price = 0 ;
+        for(OrderItem orderItem : items){
+            price += orderItem.getItemTotalPrice();
+        }
+        return price;
+    }
+
+    public int getTotalItemsQuantity(){
+        int quantity = 0 ;
+        for(OrderItem orderItem : items){
+            quantity += orderItem.getQuantity();
+        }
+        return quantity;
     }
 }
