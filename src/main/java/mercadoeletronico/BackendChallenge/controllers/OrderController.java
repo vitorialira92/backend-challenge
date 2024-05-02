@@ -2,6 +2,7 @@ package mercadoeletronico.BackendChallenge.controllers;
 
 import io.swagger.v3.oas.annotations.Parameter;
 import io.swagger.v3.oas.annotations.tags.Tag;
+import jakarta.validation.Valid;
 import mercadoeletronico.BackendChallenge.domain.Order;
 import mercadoeletronico.BackendChallenge.dtos.order.OrderCreationDTO;
 import mercadoeletronico.BackendChallenge.dtos.order.OrderUpdateRequestDTO;
@@ -39,7 +40,7 @@ public class OrderController {
     }
 
     @PostMapping("/pedido")
-    public ResponseEntity<Order> createOrder(@RequestBody OrderCreationDTO orderDTO) throws DuplicateCreationAttemptException {
+    public ResponseEntity<Order> createOrder(@Valid @RequestBody OrderCreationDTO orderDTO) throws DuplicateCreationAttemptException {
         Order order = orderService.createOrder(orderDTO);
 
         return new ResponseEntity<>(order, HttpStatus.OK);
@@ -47,7 +48,7 @@ public class OrderController {
 
     @PutMapping("/pedido/{id}")
     public ResponseEntity<Order> updateOrder(@Parameter(description = "Order Id", example = "48486589") @PathVariable String id,
-                                             @RequestBody OrderUpdateRequestDTO orderDTO) throws ResourceNotFoundException {
+                                             @Valid @RequestBody OrderUpdateRequestDTO orderDTO) throws ResourceNotFoundException {
         Order order = orderService.updateOrder(id, orderDTO);
 
         return new ResponseEntity<>(order, HttpStatus.OK);
@@ -59,7 +60,7 @@ public class OrderController {
     }
 
     @PostMapping("/status")
-    public ResponseEntity<StatusChangeResponseDTO> setOrderStatus(@RequestBody StatusChangeRequestDTO statusRequest) {
+    public ResponseEntity<StatusChangeResponseDTO> setOrderStatus(@Valid @RequestBody StatusChangeRequestDTO statusRequest) {
         StatusChangeResponseDTO response = orderService.setOrderStatus(statusRequest);
 
         return new ResponseEntity<>(response, HttpStatus.OK);
