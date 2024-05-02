@@ -72,10 +72,10 @@ E terá o seguinte response, baseado nas regras detalhadas a seguir:
 
 O status não precisa ser persistido em banco de dados, basta retornar na API.
 
-# Informações finais
+## Informações finais
 
 Visite o arquivo [instructions.md](instructions.md) para ler as instruções de como rodar o projeto.
 
-# Sinta-se livre para contribuir
+## Sinta-se livre para contribuir
 
 Envie um PR caso encontre algum erro ou ponto de melhoria :)
