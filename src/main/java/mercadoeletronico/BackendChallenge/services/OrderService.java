@@ -120,6 +120,7 @@ public class OrderService {
                 statusList.add(OrderStatus.APROVADO.name());
         }
         response.status = statusList;
+        response.pedido = statusRequest.pedido;
         return response;
     }
 

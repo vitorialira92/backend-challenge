@@ -8,4 +8,12 @@ public class StatusChangeRequestDTO {
     public int itensAprovados;
     public double valorAprovado;
     public String pedido;
+
+    public StatusChangeRequestDTO(){}
+    public StatusChangeRequestDTO(StatusChange status, int itensAprovados, double valorAprovado, String pedido) {
+        this.status = status;
+        this.itensAprovados = itensAprovados;
+        this.valorAprovado = valorAprovado;
+        this.pedido = pedido;
+    }
 }
