@@ -35,10 +35,6 @@ import static org.mockito.Mockito.when;
 public class OrderServiceTest {
     @Mock
     private OrderRepository orderRepository;
-    @Mock
-    private OrderItemRepository orderItemRepository;
-    @Mock
-    private ItemRepository itemRepository;
     @InjectMocks
     private OrderService orderService;
 
