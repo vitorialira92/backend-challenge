@@ -31,9 +31,9 @@ public class OrderServiceTest {
     @Test
     public void testFindOrderById() throws ResourceNotFoundException {
         Order expectedOrder = new Order();
-        expectedOrder.setId(1L);
+        expectedOrder.setId("1");
 
-        when(orderRepository.findById(1L)).thenReturn(Optional.of(expectedOrder));
+        when(orderRepository.findById("1")).thenReturn(Optional.of(expectedOrder));
 
         Order actualOrder = orderService.getOrderById(1L);
 

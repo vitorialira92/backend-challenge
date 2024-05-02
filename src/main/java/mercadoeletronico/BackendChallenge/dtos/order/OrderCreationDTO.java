@@ -8,7 +8,7 @@ import java.util.List;
 @Schema(description = "Order details for order creation")
 public class OrderCreationDTO {
     @Schema(description = "Order identifier")
-    public Long pedido;
+    public String pedido;
     @Schema(description = "Order items")
 
     public List<OrderItemDTO> itens;

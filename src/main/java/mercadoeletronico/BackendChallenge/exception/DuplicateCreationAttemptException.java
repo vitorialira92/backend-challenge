@@ -1,18 +1,18 @@
 package mercadoeletronico.BackendChallenge.exception;
 
 public class DuplicateCreationAttemptException extends Exception{
-    public Long id;
+    public String id;
     public String resourceName;
-    public DuplicateCreationAttemptException(Long id, String resourceName){
+    public DuplicateCreationAttemptException(String id, String resourceName){
         this.id = id;
         this.resourceName = resourceName;
     }
 
-    public Long getId() {
+    public String getId() {
         return id;
     }
 
-    public void setId(Long id) {
+    public void setId(String id) {
         this.id = id;
     }
 

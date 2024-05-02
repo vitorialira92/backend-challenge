@@ -32,7 +32,7 @@ public class OrderService {
     @Autowired
     private ItemRepository itemRepository;
 
-    public Order getOrderById(Long id) throws ResourceNotFoundException {
+    public Order getOrderById(String id) throws ResourceNotFoundException {
         return orderRepository.findById(id)
                 .orElseThrow(() -> new ResourceNotFoundException("Order"));
     }
@@ -62,7 +62,7 @@ public class OrderService {
         return orderRepository.save(order);
     }
 
-    public Order updateOrder(Long id, OrderUpdateRequestDTO orderDto) throws ResourceNotFoundException {
+    public Order updateOrder(String id, OrderUpdateRequestDTO orderDto) throws ResourceNotFoundException {
         Order order = orderRepository.findById(id)
                 .orElseThrow(() -> new ResourceNotFoundException("Order"));
 
@@ -85,7 +85,7 @@ public class OrderService {
         return orderRepository.save(order);
     }
 
-    public void deleteOrder(Long id) throws ResourceNotFoundException {
+    public void deleteOrder(String id) throws ResourceNotFoundException {
         Order order = orderRepository.findById(id)
                 .orElseThrow(() -> new ResourceNotFoundException("Order"));
 

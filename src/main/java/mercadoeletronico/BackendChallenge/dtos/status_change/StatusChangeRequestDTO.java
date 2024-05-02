@@ -7,5 +7,5 @@ public class StatusChangeRequestDTO {
     public StatusChange status;
     public int itensAprovados;
     public double valorAprovado;
-    public Long pedido;
+    public String pedido;
 }

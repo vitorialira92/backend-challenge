@@ -29,7 +29,7 @@ public class OrderController {
 
     @GetMapping("/pedido/{id}")
     public ResponseEntity<Order> getOrder(@Parameter(description = "Order Id", example = "48486589")
-                               @PathVariable Long id) throws ResourceNotFoundException {
+                               @PathVariable String id) throws ResourceNotFoundException {
         return new ResponseEntity<>(orderService.getOrderById(id), HttpStatus.OK);
     }
 
@@ -46,7 +46,7 @@ public class OrderController {
     }
 
     @PutMapping("/pedido/{id}")
-    public ResponseEntity<Order> updateOrder(@Parameter(description = "Order Id", example = "48486589") @PathVariable Long id,
+    public ResponseEntity<Order> updateOrder(@Parameter(description = "Order Id", example = "48486589") @PathVariable String id,
                                              @RequestBody OrderUpdateRequestDTO orderDTO) throws ResourceNotFoundException {
         Order order = orderService.updateOrder(id, orderDTO);
 
@@ -54,7 +54,7 @@ public class OrderController {
     }
 
     @DeleteMapping("/pedido/{id}")
-    public void deleteOrder(@PathVariable Long id) throws ResourceNotFoundException {
+    public void deleteOrder(@PathVariable String id) throws ResourceNotFoundException {
         orderService.deleteOrder(id);
     }
 
