@@ -3,9 +3,11 @@ package mercadoeletronico.BackendChallenge.services;
 import mercadoeletronico.BackendChallenge.domain.Item;
 import mercadoeletronico.BackendChallenge.domain.Order;
 import mercadoeletronico.BackendChallenge.domain.OrderItem;
+import mercadoeletronico.BackendChallenge.dtos.order.OrderCreationDTO;
 import mercadoeletronico.BackendChallenge.dtos.status_change.StatusChange;
 import mercadoeletronico.BackendChallenge.dtos.status_change.StatusChangeRequestDTO;
 import mercadoeletronico.BackendChallenge.dtos.status_change.StatusChangeResponseDTO;
+import mercadoeletronico.BackendChallenge.exception.DuplicateCreationAttemptException;
 import mercadoeletronico.BackendChallenge.exception.ResourceNotFoundException;
 import mercadoeletronico.BackendChallenge.repositories.ItemRepository;
 import mercadoeletronico.BackendChallenge.repositories.OrderItemRepository;
@@ -59,6 +61,18 @@ public class OrderServiceTest {
 
         assertThrows( ResourceNotFoundException.class, () -> {
                     orderService.getOrderById("1");
+                });
+    }
+
+    @Test
+    public void createOrderShouldThrowAnException() throws DuplicateCreationAttemptException {
+        when(orderRepository.findById("123456")).thenReturn(Optional.of(getStandardOrder()));
+
+        OrderCreationDTO orderCreationDTO = new OrderCreationDTO();
+        orderCreationDTO.pedido = "123456";
+
+        assertThrows(DuplicateCreationAttemptException.class, () -> {
+                    orderService.createOrder(orderCreationDTO);
                 });
     }
 
